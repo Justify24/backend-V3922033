@@ -11,7 +11,10 @@
         <thead>
             <tr>
                 <th>Nama Product</th>
+                <th>Kategori</th>
                 <th>Deskripsi</th>
+                <th>Harga</th>
+                <th>action</th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +24,10 @@
                 <td><?= $k->kategori; ?></td>
                 <td><?= $k->deskripsi; ?></td>
                 <td><?= $k->harga; ?></td>
+                <td>
+                    <a href="<?=base_url('editkomponen/' . $k->id)?>">edit</a>
+                    <a href="<?=base_url('deletekomponen/' . $k->id)?>">hapus</a>
+                </td>
             </tr>
             <?php endforeach; ?>
         </tbody>

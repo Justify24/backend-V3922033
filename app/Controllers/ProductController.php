@@ -31,4 +31,34 @@ class ProductController extends BaseController{
         ];
         return view('komponen', $data);
     }
+
+    public function updateKomponen($id){
+        $nama = $this->request->getVar("nama");
+        $kategori = $this->request->getVar("kategori");
+        $deskripsi = $this->request->getVar("deskripsi");
+        $harga = $this->request->getVar("harga");
+    
+        $data = [
+            'nama' => $nama,
+            'kategori' => $kategori,
+            'deskripsi' => $deskripsi,
+            'harga' => $harga
+        ];
+        $this->komponen->update($id, $data);
+        return redirect()->to(base_url("viewkomponen"));
+    }
+
+    public function getKomponen($id) {
+        $komponen = $this->komponen->where("id", $id)->first();
+        $data = [
+            'komponen' => $komponen
+        ];
+        return view('editkomponen', $data);   
+    }
+
+    public function deleteKomponen($id){
+        $this->komponen->delete($id);
+        return redirect()->to(base_url("viewkomponen"));
+    }
+
 }
